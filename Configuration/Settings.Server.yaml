@@ -1,0 +1,8 @@
+SJS:
+  Neos:
+    MCP:
+      server:
+        # configuration for the default server
+        mcp:
+          featureSets:
+            test: \SJS\Neos\MCP\FeatureSet\Test\TestFeatureSet
