@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SJS\Neos\MCP\FeatureSet\Test;
 
 use Neos\Flow\Annotations as Flow;
-use SJS\Neos\MCP\FeatureSet\AbstractFeatureSet;
+use SJS\Flow\MCP\FeatureSet\AbstractFeatureSet;
 use SJS\Neos\MCP\FeatureSet\Test\TestFeatureSet\PingTool;
 use SJS\Neos\MCP\FeatureSet\Test\TestFeatureSet\AuthenticatedUserTool;
 

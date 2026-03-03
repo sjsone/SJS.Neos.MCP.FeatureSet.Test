@@ -8,10 +8,10 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\ActionRequest;
 use Neos\Flow\Security\Context as SecurityContext;
 use Neos\Neos\Domain\Service\UserService;
-use SJS\Neos\MCP\Domain\MCP\Tool;
-use SJS\Neos\MCP\Domain\MCP\Tool\Annotations;
-use SJS\Neos\MCP\Domain\MCP\Tool\Content;
-use SJS\Neos\MCP\JsonSchema\ObjectSchema;
+use SJS\Flow\MCP\Domain\MCP\Tool;
+use SJS\Flow\MCP\Domain\MCP\Tool\Annotations;
+use SJS\Flow\MCP\Domain\MCP\Tool\Content;
+use SJS\Flow\MCP\JsonSchema\ObjectSchema;
 
 class AuthenticatedUserTool extends Tool
 {

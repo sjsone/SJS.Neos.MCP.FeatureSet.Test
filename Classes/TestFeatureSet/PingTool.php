@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace SJS\Neos\MCP\FeatureSet\Test\TestFeatureSet;
 
 use Neos\Flow\Mvc\ActionRequest;
-use SJS\Neos\MCP\Domain\MCP\Tool;
-use SJS\Neos\MCP\Domain\MCP\Tool\Annotations;
-use SJS\Neos\MCP\Domain\MCP\Tool\Content;
-use SJS\Neos\MCP\JsonSchema\ObjectSchema;
-use SJS\Neos\MCP\JsonSchema\StringSchema;
+use SJS\Flow\MCP\Domain\MCP\Tool;
+use SJS\Flow\MCP\Domain\MCP\Tool\Annotations;
+use SJS\Flow\MCP\Domain\MCP\Tool\Content;
+use SJS\Flow\MCP\JsonSchema\ObjectSchema;
+use SJS\Flow\MCP\JsonSchema\StringSchema;
 
 class PingTool extends Tool
 {
