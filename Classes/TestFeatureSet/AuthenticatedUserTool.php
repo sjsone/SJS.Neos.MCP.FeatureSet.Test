@@ -34,6 +34,9 @@ class AuthenticatedUserTool extends Tool
         );
     }
 
+    /**
+     * @param array<string,mixed> $input
+     */
     public function run(ActionRequest $actionRequest, array $input): Content
     {
         $account = $this->securityContext->getAccount();
@@ -64,6 +67,6 @@ class AuthenticatedUserTool extends Tool
             $info['isAdministrator'] = $this->userService->currentUserIsAdministrator();
         }
 
-        return Content::structured($info)->addText(json_encode($info, JSON_PRETTY_PRINT));
+        return Content::structuredWithFallback($info);
     }
 }

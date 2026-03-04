@@ -31,9 +31,16 @@ class PingTool extends Tool
         );
     }
 
+    /**
+     * @param array<string,mixed> $input
+     */
     public function run(ActionRequest $actionRequest, array $input): Content
     {
         $message = $input['message'] ?? 'pong';
+        if (!\is_string($message)) {
+            throw new \InvalidArgumentException("message must be of type string");
+        }
+
         return Content::text($message);
     }
 }
