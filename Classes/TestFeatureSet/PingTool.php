@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SJS\Neos\MCP\FeatureSet\Test\TestFeatureSet;
 
-use Neos\Flow\Mvc\ActionRequest;
+use SJS\Flow\MCP\Domain\Identity\ServerContext;
 use SJS\Flow\MCP\Domain\MCP\Tool;
 use SJS\Flow\MCP\Domain\MCP\Tool\Annotations;
 use SJS\Flow\MCP\Domain\MCP\Tool\Content;
@@ -34,7 +34,7 @@ class PingTool extends Tool
     /**
      * @param array<string,mixed> $input
      */
-    public function run(ActionRequest $actionRequest, array $input): Content
+    public function run(ServerContext $serverContext, array $input): Content
     {
         $message = $input['message'] ?? 'pong';
         if (!\is_string($message)) {

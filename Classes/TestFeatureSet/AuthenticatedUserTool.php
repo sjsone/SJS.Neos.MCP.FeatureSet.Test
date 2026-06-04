@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SJS\Neos\MCP\FeatureSet\Test\TestFeatureSet;
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Mvc\ActionRequest;
+use SJS\Flow\MCP\Domain\Identity\ServerContext;
 use Neos\Flow\Security\Context as SecurityContext;
 use Neos\Neos\Domain\Service\UserService;
 use SJS\Flow\MCP\Domain\MCP\Tool;
@@ -37,7 +37,7 @@ class AuthenticatedUserTool extends Tool
     /**
      * @param array<string,mixed> $input
      */
-    public function run(ActionRequest $actionRequest, array $input): Content
+    public function run(ServerContext $serverContext, array $input): Content
     {
         $account = $this->securityContext->getAccount();
 
