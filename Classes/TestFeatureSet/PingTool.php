@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace SJS\Neos\MCP\FeatureSet\Test\TestFeatureSet;
 
-use SJS\Flow\MCP\Domain\Identity\ServerContext;
+use SJS\Flow\MCP\Domain\Connection\ServerContext;
 use SJS\Flow\MCP\Domain\MCP\Tool;
 use SJS\Flow\MCP\Domain\MCP\Tool\Annotations;
 use SJS\Flow\MCP\Domain\MCP\Tool\Content;
+use SJS\Flow\MCP\Domain\MCP\ToolConstructor;
+use SJS\Flow\MCP\FeatureSet\FeatureSetInterface;
 use SJS\Flow\MCP\JsonSchema\ObjectSchema;
 use SJS\Flow\MCP\JsonSchema\StringSchema;
 
-class PingTool extends Tool
+class PingTool extends Tool implements ToolConstructor
 {
-    public function __construct()
+    public function __construct(FeatureSetInterface $featureSet)
     {
         parent::__construct(
             name: 'ping',
@@ -27,7 +29,8 @@ class PingTool extends Tool
                 title: 'Ping',
                 readOnlyHint: true,
                 idempotentHint: true
-            )
+            ),
+            featureSet: $featureSet
         );
     }
 

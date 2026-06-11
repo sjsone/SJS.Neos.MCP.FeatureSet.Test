@@ -5,15 +5,17 @@ declare(strict_types=1);
 namespace SJS\Neos\MCP\FeatureSet\Test\TestFeatureSet;
 
 use Neos\Flow\Annotations as Flow;
-use SJS\Flow\MCP\Domain\Identity\ServerContext;
+use SJS\Flow\MCP\Domain\Connection\ServerContext;
 use Neos\Flow\Security\Context as SecurityContext;
 use Neos\Neos\Domain\Service\UserService;
 use SJS\Flow\MCP\Domain\MCP\Tool;
 use SJS\Flow\MCP\Domain\MCP\Tool\Annotations;
 use SJS\Flow\MCP\Domain\MCP\Tool\Content;
+use SJS\Flow\MCP\Domain\MCP\ToolConstructor;
+use SJS\Flow\MCP\FeatureSet\FeatureSetInterface;
 use SJS\Flow\MCP\JsonSchema\ObjectSchema;
 
-class AuthenticatedUserTool extends Tool
+class AuthenticatedUserTool extends Tool implements ToolConstructor
 {
     #[Flow\Inject]
     protected SecurityContext $securityContext;
@@ -21,7 +23,7 @@ class AuthenticatedUserTool extends Tool
     #[Flow\Inject]
     protected UserService $userService;
 
-    public function __construct()
+    public function __construct(FeatureSetInterface $featureSet)
     {
         parent::__construct(
             name: 'authenticated_user',
@@ -30,7 +32,8 @@ class AuthenticatedUserTool extends Tool
             annotations: new Annotations(
                 title: 'Authenticated User',
                 readOnlyHint: true
-            )
+            ),
+            featureSet: $featureSet
         );
     }
 
@@ -47,9 +50,9 @@ class AuthenticatedUserTool extends Tool
 
         $user = $this->userService->getCurrentUser();
 
-        $roles = array_map(
+        $roles = \array_map(
             fn($role) => $role->getIdentifier(),
-            array_values($account->getRoles())
+            \array_values($account->getRoles())
         );
 
         $info = [
